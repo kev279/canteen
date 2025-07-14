@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=StatsTracker
+comment1.params=p\ waitTime
+comment1.target=void\ addWait(Person,\ int)
+comment1.text=\r\n\ Add\ a\ wait\ time\ for\ served\ perosn\r\n\ @param\ p\ Person\ served\ \r\n\ @param\ waitTime\ Time\ waited\ in\ queue\ (min)\r\n
+comment2.params=hungry
+comment2.target=void\ prinStats(int)
+comment2.text=\r\n\ Prints\ average\ wait\ times\ and\ number\ of\ hungry\ people\ \r\n\ @param\ hungry\ Number\ of\ people\ who\ left\ becuase\ queue\ was\ full\r\n
+comment3.params=list
+comment3.target=double\ mean(java.util.ArrayList)
+comment3.text=\r\n\ @param\ list\ List\ of\ wait\ times\r\n\ @return\ Average\ wait\ time,\ or\ 00\ if\ empty\r\n
+numComments=4

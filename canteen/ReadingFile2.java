@@ -13,7 +13,7 @@ import java.io.IOException;
 public class ReadingFile2 {    
     public static void main(String[] args) {    
 
-        //  Create a File object pointing to "arrivals.csv" 
+        //  Create a File object pointing to "arrivals.csv"  
         File myFile = new File("arrivals.csv");
 
         try {
@@ -21,7 +21,7 @@ public class ReadingFile2 {
             Scanner myReader = new Scanner(myFile);
 
             //  Skip the first line (header line with column names)
-            if (myReader.hasNextLine()) {
+            if (myReader.hasNextLine()) {  //Skip the first line ( Header line with  
                 myReader.nextLine();  // This line is not data, just the column titles
             }
 
@@ -48,7 +48,7 @@ public class ReadingFile2 {
             }
 
             //  Close the Scanner to free system resources
-            myReader.close();
+            myReader.close(); 
 
         } catch (IOException e) {
             //  If something goes wrong (like file not found), show the error

@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=CanteenSimulator
+comment0.text=\r\n\ Main\ simulator\ class\ that\ reads\ arrivals.csv\ and\ runs\ the\ queue\ simulation.\r\n
+comment1.params=staffSkip
+comment1.target=void\ simulate(boolean)
+comment1.text=\r\n\ Runs\ the\ simulation\ with\ or\ wihtout\ staff\ jumping\ the\ queue\r\n\ Reads\ the\ arrivals\ file\ line\ by\ line,\ simulates\ arrivals\ and\ serving\r\n\ \r\n\ @param\ staffSkip\ If\ tru\ staff\ jump\ the\ queue;\ if\ false\ staff\ wait\ normally\r\n\ @throws\ IOException\ if\ file\ reading\ fails\r\n
+numComments=2
