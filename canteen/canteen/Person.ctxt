@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Person
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ person\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=type\ arrivalTime
+comment1.target=Person(java.lang.String,\ int)
+comment2.params=
+comment2.target=java.lang.String\ getType()
+comment3.params=type
+comment3.target=void\ setType(java.lang.String)
+comment4.params=
+comment4.target=int\ getArrivalTime()
+comment5.params=arrivalTime
+comment5.target=void\ setArrivalTime(int)
+numComments=6

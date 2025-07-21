@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=CanteenGUI
+comment0.text=\r\n\ Gui\ interface\ for\ the\ WHS\ Canteen\ Queue\ Simulator\ \r\n\ Provides\ a\ black\ themed\ interface\ with\ buttons\ to\ simulator\ queue\ behaviors\r\n
+comment1.params=
+comment1.target=CanteenGUI()
+comment1.text=\r\n\ Constructor\ to\ set\ up\ the\ GUI\ layout,\ styling\ and\ components\r\n
+comment2.params=
+comment2.target=void\ configureScrollBarColors()
+comment3.params=button
+comment3.target=void\ styleButton(javax.swing.JButton)
+comment3.text=\r\n\ Style\ a\ button\ with\ dark\ bacckgroundand\ cyan\ text\r\n\ @param\ button\ the\ JButton\ to\ be\ styled\r\n
+comment4.params=staffSkip
+comment4.target=void\ runSimulation(boolean)
+comment4.text=\r\n\ Runs\ the\ simulation\ and\ display\ results\ in\ the\ text\ area\r\n\ @param\ staffSkip\ true\ if\ staff\ should\ skip\ the\ queue\ ,\ false\ otherwise\ \r\n
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+comment5.text=\r\n\ Main\ meted\ to\ launch\ the\ GUI\ \r\n
+numComments=6

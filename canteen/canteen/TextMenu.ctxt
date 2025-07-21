@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=TextMenu
+comment0.text=\r\n\ Simple\ text\ menu\ interface\ to\ run\ the\ canteen\ simulator\ in\ console\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2
