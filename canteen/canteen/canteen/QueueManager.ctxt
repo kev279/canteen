@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=QueueManager
+comment0.text=\r\n\ Manages\ the\ queue\ of\ people\ waiting\ in\ the\ canteen\r\n\ Supports\ staff\ queue\ jumping\ and\ limts\ queue\ size\ for\ social\ distancing\r\n
+comment1.params=maxSize
+comment1.target=QueueManager(int)
+comment1.text=\r\n\ Constructor\ sets\ the\ maximum\ queue\ size\ allowed\r\n\ @param\ maxSize\ Maximum\ number\ of\ people\ allowed\ in\ queue\r\n
+comment2.params=p\ staffSkip
+comment2.target=void\ enqueue(Person,\ boolean)
+comment2.text=\r\n\ Adds\ a\ person\ to\ the\ queue\r\n\ If\ staffSkip\ is\ true\ ,\ staff\ jump\ after\ the\ first\ person\r\n\ If\ the\ queue\ is\ full\ ,\ the\ person\ leaves\ hungry\ (not\ added)\r\n\ \r\n\ @param\ p\ The\ person\ joining\ the\ queue\r\n\ @param\ staffSkip\ If\ true\ ,\ staff\ can\ jump\ the\ queue\r\n
+comment3.params=
+comment3.target=Person\ dequeue()
+comment3.text=\r\n\ Removes\ and\ returns\ the\ first\ person\ in\ the\ queue\ when\ served\r\n\ @return\ The\ person\ served\ or\ null\ if\ queue\ empty\ \r\n
+comment4.params=
+comment4.target=int\ getHungryCount()
+comment4.text=\r\n\ Returns\ how\ many\ people\ left\ hungry\ due\ to\ full\ queue\r\n\ @return\ Number\ of\ hungry\ peopl\r\n
+numComments=5

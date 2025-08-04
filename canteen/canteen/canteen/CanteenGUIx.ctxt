@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=CanteenGUIx
+comment0.text=\r\n\ CanteenGUIx\ creates\ a\ graphical\ user\ interface\ for\ the\ WHS\ Canteen\ Queue\ Simulator.\r\n\ It\ allows\ users\ to\ simulate\ queue\ behavior\ where\ staff\ either\ wait\ or\ skip,\r\n\ and\ provides\ a\ toggle\ to\ switch\ between\ dark\ and\ light\ themes\ for\ accessibility.\r\n
+comment1.params=
+comment1.target=CanteenGUIx()
+comment1.text=\r\n\ Constructor\ sets\ up\ the\ full\ GUI\ layout,\ logic,\ and\ theme\r\n
+comment2.params=
+comment2.target=void\ configureScrollBarColors()
+comment3.params=button
+comment3.target=void\ styleButton(javax.swing.JButton)
+comment3.text=\r\n\ Custom\ styling\ for\ each\ button\:\ font,\ colors,\ borders,\ hover\ effect\r\n\ @param\ button\ the\ JButton\ to\ style\r\n
+comment4.params=staffSkip
+comment4.target=void\ runSimulation(boolean)
+comment4.text=\r\n\ Runs\ the\ queue\ simulation\ and\ displays\ results\ in\ the\ output\ area\r\n\ @param\ staffSkip\ true\ if\ staff\ skip\ the\ queue,\ false\ if\ they\ wait\r\n
+comment5.params=
+comment5.target=void\ toggleTheme()
+comment5.text=\r\n\ Switches\ between\ dark\ mode\ and\ light\ mode\ when\ the\ toggle\ button\ is\ clicked\r\n
+comment6.params=
+comment6.target=void\ applyTheme()
+comment6.text=\r\n\ Applies\ the\ selected\ theme\ (dark\ or\ light)\ to\ all\ components\r\n
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+comment7.text=\r\n\ Main\ method\ that\ launches\ the\ GUI\ application\r\n
+numComments=8
