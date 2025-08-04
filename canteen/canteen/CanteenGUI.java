@@ -1,137 +1,168 @@
-
-/**
- * Write a description of class simulator here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.IOException;
 
 /**
- * Gui interface for the WHS Canteen Queue Simulator 
- * Provides a black themed interface with buttons to simulator queue behaviors
+ * CanteenGUIx creates a graphical interface for simulating the WHS canteen queue.
+ * It allows users to simulate different queue behaviors and toggle between dark/light themes.
  */
-public class CanteenGUI extends JFrame { // buttons for user interaction
-    private JButton normalBtn, skipBtn, exitBtn;
+public class CanteenGUIx extends JFrame {
+    // Buttons for user actions
+    private JButton normalBtn, skipBtn, exitBtn, toggleThemeBtn;
+
     // Text area to display simulation output
     private JTextArea outputArea;
-    
+
+    // Boolean flag to track if current mode is dark
+    private boolean isDarkMode = true;
+
+    // Panel that holds buttons (needed for theme switching)
+    private JPanel buttonPanel;
+
     /**
-     * Constructor to set up the GUI layout, styling and components
+     * Constructor that builds the full GUI layout and logic
      */
-    public CanteenGUI() {
-        // Set title size close operation andcenter the windows
-        setTitle ("WHS Canteen Queue Simulator");
+    public CanteenGUIx() {
+        // Set up window properties
+        setTitle("WHS Canteen Queue Simulator");
         setSize(700, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // Center the window
         setLayout(new BorderLayout());
-        getContentPane().setBackground(Color.BLACK);// whole frame background
-        
-        //Button Panel
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10 ));
-        buttonPanel.setBackground(Color.BLACK);
-        
-        // Initialize button with lables 
-        normalBtn = new JButton("Simulate(Staff wait)");
-        skipBtn = new JButton("Simulate(Staff Skip)");
+
+       
+        // Button Panel (Top of Window)
+      
+        buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        buttonPanel.setBackground(Color.BLACK); // initial background
+
+        // Create all buttons
+        normalBtn = new JButton("Simulate (Staff Wait)");
+        skipBtn = new JButton("Simulate (Staff Skip)");
         exitBtn = new JButton("Exit");
-        
-        //Style buttons
+        toggleThemeBtn = new JButton("Switch to Light Mode"); // toggle button
+
+        // Apply custom styling to buttons
         styleButton(normalBtn);
         styleButton(skipBtn);
         styleButton(exitBtn);
-        
-        //Add button to the panel
+        styleButton(toggleThemeBtn);
+
+        // Add all buttons to the top panel
         buttonPanel.add(normalBtn);
         buttonPanel.add(skipBtn);
         buttonPanel.add(exitBtn);
+        buttonPanel.add(toggleThemeBtn);
+
         
-        //Output area setup
+        // Output Text Area (Center)
+      
         outputArea = new JTextArea();
-        outputArea.setEditable(false);
-        outputArea.setBackground(Color.BLACK);
-        outputArea.setForeground(Color.WHITE); // white text
-        outputArea.setCaretColor(Color.WHITE);
-        outputArea.setFont(new Font("Consolas", Font.PLAIN, 14));
+        outputArea.setEditable(false); // Make output read-only
+        outputArea.setFont(new Font("Consolas", Font.PLAIN, 14)); // Monospaced for formatting
         outputArea.setMargin(new Insets(10, 10, 10, 10));
         outputArea.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-        
-        // Scroll pane for output
+
+        // ScrollPane wraps the output area for scrolling
         JScrollPane scrollPane = new JScrollPane(outputArea);
         scrollPane.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        scrollPane.getViewport().setBackground(Color.BLACK);
-        scrollPane.setBackground(Color.BLACK);
-        
-        // Scrollbar styling
         scrollPane.getVerticalScrollBar().setUI(new javax.swing.plaf.basic.BasicScrollBarUI() {
             @Override
             protected void configureScrollBarColors() {
                 this.thumbColor = new Color(90, 90, 90);
                 this.trackColor = Color.BLACK;
             }
-        
-        
         });
+
+      
+        // Button Actions (Event Listeners)
         
-        //Add action to buttons
-        //Button 1 simulate with staff waiting normally
-        normalBtn.addActionListener(e -> runSimulation(false)); //simulate normal 
-        //Button 2 simulatte with staff skippign queue
-        skipBtn.addActionListener( e-> runSimulation(true));// simulate staff skip
-        //Button  exit the program 
-        exitBtn.addActionListener(e -> System.exit(0));// exit app
+        normalBtn.addActionListener(e -> runSimulation(false));// Staff wait
+        skipBtn.addActionListener(e -> runSimulation(true)); // Staff skip
+        exitBtn.addActionListener(e -> System.exit(0));  // Close program
+        toggleThemeBtn.addActionListener(e -> toggleTheme()); // Switch theme
+
         
-        // Add panels to frame
+        // Add Panels to Window
+        
         add(buttonPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
-        
-        // Make GUI visible
+
+        // Apply initial theme (dark mode)
+        applyTheme();
+
+        // Show the window
         setVisible(true);
-        
     }
-    
+
     /**
-     * Style a button with dark bacckgroundand cyan text
-     * @param button the JButton to be styled
+     * Apply custom styling to a given button (font, cursor, no focus, etc.)
      */
     private void styleButton(JButton button) {
-        button.setBackground(new Color(30, 30, 30));// dark grey
-        button.setForeground(Color.WHITE);// white text
-        button.setFocusPainted(false);// no outline on focus
-        button.setFont(new Font("SansSerif", Font.BOLD, 14)); //bold text
-        button.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        button.setFocusPainted(false);
+        button.setFont(new Font("SansSerif", Font.BOLD, 14));
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }   
-    
+    }
+
     /**
-     * Runs the simulation and display results in the text area
-     * @param staffSkip true if staff should skip the queue , false otherwise 
+     * Runs the simulation and outputs results in the text area
+     * @param staffSkip true if staff skip the queue, false if they wait
      */
     private void runSimulation(boolean staffSkip) {
         CanteenSimulator sim = new CanteenSimulator();
-        outputArea.setText("");// clear previous output
+        outputArea.setText(""); // Clear previous output
         try {
-            //run simulation with output redirected to GUI text area
-            sim.simulateWithOutput(staffSkip, outputArea);
-            
+            sim.simulateWithOutput(staffSkip, outputArea); // Run and display
         } catch (IOException ex) {
-            // Show error if file reading fails 
-            outputArea.setText("Error reading file " + ex.getMessage());
-        }    
+            outputArea.setText("Error reading file: " + ex.getMessage());
+        }
     }
-    
+
     /**
-     * Main meted to launch the GUI 
+     * Toggles between dark mode and light mode and updates UI
+     */
+    private void toggleTheme() {
+        isDarkMode = !isDarkMode; // Flip boolean flag
+        applyTheme();             // Re-apply colors
+    }
+
+    /**
+     * Applies current theme settings to all components
+     */
+    private void applyTheme() {
+        // Choose colors depending on dark mode or light mode
+        Color bg = isDarkMode ? Color.BLACK : Color.WHITE;
+        Color fg = isDarkMode ? Color.WHITE : Color.BLACK;
+        Color btnBg = isDarkMode ? new Color(30, 30, 30) : Color.LIGHT_GRAY;
+        Color borderColor = isDarkMode ? Color.WHITE : Color.BLACK;
+
+        // Update background + text colors
+        getContentPane().setBackground(bg);
+        buttonPanel.setBackground(bg);
+        outputArea.setBackground(bg);
+        outputArea.setForeground(fg);
+        outputArea.setCaretColor(fg);
+
+        // Update all button colors
+        JButton[] buttons = { normalBtn, skipBtn, exitBtn, toggleThemeBtn };
+        for (JButton btn : buttons) {
+            btn.setBackground(btnBg);
+            btn.setForeground(fg);
+            btn.setBorder(BorderFactory.createLineBorder(borderColor));
+        }
+
+        // Update toggle button text
+        toggleThemeBtn.setText(isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode");
+    }
+
+    /**
+     * Main method to launch the app
      */
     public static void main(String[] args) {
-        new CanteenGUI();
+        new CanteenGUIx();
     }
 }
-        
+
     
     
     
